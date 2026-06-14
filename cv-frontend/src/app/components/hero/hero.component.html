@@ -1,0 +1,30 @@
+<section id="hero" class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-bg"></div>
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <p class="hero-greeting">Bonjour, je suis</p>
+      <h1 class="hero-name">Mohamed<br><span>Jamazi</span></h1>
+      <p class="hero-role">Étudiant en Informatique de Gestion</p>
+      <p class="hero-tagline">Passionné par le développement web, les systèmes d'information et la transformation numérique des organisations.</p>
+      <div class="hero-btns">
+        <button class="btn btn-primary" (click)="scrollTo('projects')">Voir mes projets</button>
+        <button class="btn btn-outline" (click)="scrollTo('contact')">Contactez-moi</button>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <div class="photo-ring"></div>
+      <div class="photo-wrapper">
+        <img src="assets/images/profile.jpg" alt="Mohamed Jamazi" onerror="this.src='https://ui-avatars.com/api/?name=Mohamed+Jamazi&size=400&background=2563EB&color=fff&bold=true'">
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator" (click)="scrollTo('about')">
+    <span>Défiler</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"/>
+    </svg>
+  </div>
+</section>

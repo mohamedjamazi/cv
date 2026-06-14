@@ -1,0 +1,93 @@
+<section id="contact" class="section contact-section">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-label">Travaillons ensemble</p>
+      <h2 class="section-title">Contact</h2>
+      <p class="section-subtitle">N'hésitez pas à me contacter pour toute opportunité ou collaboration.</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Left: info -->
+      <div class="contact-info">
+        <h3 class="info-title">Restons en contact</h3>
+        <p class="info-desc">Je suis ouvert aux opportunités de stage, aux projets collaboratifs et aux échanges professionnels. Mon équipe répond généralement dans les 24h.</p>
+
+        <div class="contact-items">
+          @for (c of contacts; track c.label) {
+            <div class="contact-item">
+              <span class="contact-icon"><app-icon [name]="c.icon" [size]="20"></app-icon></span>
+              <div class="contact-details">
+                <span class="contact-label">{{ c.label }}</span>
+                @if (c.href) {
+                  <a [href]="c.href" class="contact-value" [attr.target]="c.href.startsWith('http') ? '_blank' : null">{{ c.value }}</a>
+                } @else {
+                  <span class="contact-value">{{ c.value }}</span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="langs">
+          <h4 class="langs-title">Langues</h4>
+          <div class="lang-list">
+            <div class="lang-item"><span class="lang-name">Arabe</span><span class="lang-level native">Natif</span></div>
+            <div class="lang-item"><span class="lang-name">Français</span><span class="lang-level fluent">Courant</span></div>
+            <div class="lang-item"><span class="lang-name">Anglais</span><span class="lang-level inter">Intermédiaire</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <form class="contact-form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <div class="form-row">
+          <div class="form-group" [class.error]="isInvalid('nom')">
+            <label for="nom">Nom complet *</label>
+            <input id="nom" type="text" formControlName="nom" placeholder="Mohamed Jamazi">
+            @if (isInvalid('nom')) {
+              <span class="err-msg">Le nom doit contenir au moins 2 caractères.</span>
+            }
+          </div>
+          <div class="form-group" [class.error]="isInvalid('email')">
+            <label for="email">Email *</label>
+            <input id="email" type="email" formControlName="email" placeholder="votre@email.com">
+            @if (isInvalid('email')) {
+              <span class="err-msg">Veuillez entrer un email valide.</span>
+            }
+          </div>
+        </div>
+
+        <div class="form-group" [class.error]="isInvalid('sujet')">
+          <label for="sujet">Sujet *</label>
+          <input id="sujet" type="text" formControlName="sujet" placeholder="Demande de stage / Collaboration...">
+          @if (isInvalid('sujet')) {
+            <span class="err-msg">Le sujet doit contenir au moins 3 caractères.</span>
+          }
+        </div>
+
+        <div class="form-group" [class.error]="isInvalid('message')">
+          <label for="message">Message *</label>
+          <textarea id="message" formControlName="message" rows="6" placeholder="Votre message..."></textarea>
+          @if (isInvalid('message')) {
+            <span class="err-msg">Le message doit contenir au moins 10 caractères.</span>
+          }
+        </div>
+
+        <button type="submit" class="submit-btn" [disabled]="loading()">
+          @if (loading()) {
+            <span class="spinner"></span> Envoi en cours...
+          } @else {
+            Envoyer le message
+          }
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Toast -->
+@if (toast()) {
+  <div class="toast" [class.toast-success]="toast()!.type === 'success'" [class.toast-error]="toast()!.type === 'error'">
+    {{ toast()!.msg }}
+  </div>
+}

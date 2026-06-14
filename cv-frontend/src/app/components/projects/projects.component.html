@@ -1,0 +1,42 @@
+<section id="projects" class="section">
+  <div class="container">
+    <div #animEl class="fade-in">
+      <p class="section-label">Ce que j'ai construit</p>
+      <h2 class="section-title">Projets</h2>
+      <p class="section-subtitle">Quelques projets concrets qui illustrent mes compétences techniques.</p>
+    </div>
+
+    <div class="projects-grid">
+      @for (proj of projects; track proj.title; let i = $index) {
+        <div #animEl class="fade-in project-card" [style.transition-delay]="(i * 0.15) + 's'">
+          <div class="card-top">
+            <span class="project-icon"><app-icon [name]="proj.icon" [size]="24"></app-icon></span>
+            <span class="project-period">{{ proj.period }}</span>
+          </div>
+          <h3 class="project-title">{{ proj.title }}</h3>
+          <p class="project-desc">{{ proj.description }}</p>
+          <div class="project-tech">
+            @for (t of proj.tech; track t) {
+              <span class="tech-tag">{{ t }}</span>
+            }
+          </div>
+          <div class="project-overlay">
+            @if (proj.github) {
+              <a [href]="proj.github" target="_blank" class="overlay-btn">
+                <app-icon name="github" [size]="18"></app-icon> GitHub
+              </a>
+            }
+            @if (proj.demo) {
+              <a [href]="proj.demo" target="_blank" class="overlay-btn overlay-btn--demo">
+                <app-icon name="external" [size]="18"></app-icon> Demo
+              </a>
+            }
+            @if (!proj.github && !proj.demo) {
+              <span class="overlay-label">Projet académique</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

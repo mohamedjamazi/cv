@@ -1,0 +1,24 @@
+<section id="about" class="section">
+  <div class="container">
+    <div #animEl class="fade-in">
+      <p class="section-label">Qui suis-je ?</p>
+      <h2 class="section-title">À Propos</h2>
+    </div>
+
+    <div #animEl class="fade-in about-content">
+      <p class="about-bio">
+        Étudiant en <strong>Licence Informatique de Gestion (Business Computing)</strong> à l'École Supérieure d'Économie Numérique (ESEN), Manouba, je suis passionné par le développement web, la gestion des systèmes d'information et la transformation numérique. Avec des expériences concrètes en développement full-stack et en contexte professionnel, je cherche à contribuer à des projets alliant technologie et optimisation des processus métier.
+      </p>
+    </div>
+
+    <div class="stats-grid">
+      @for (stat of stats; track stat.label; let i = $index) {
+        <div #animEl class="fade-in stat-card" [style.transition-delay]="(i * 0.15) + 's'">
+          <span class="stat-icon"><app-icon [name]="stat.icon" [size]="26"></app-icon></span>
+          <span class="stat-value">{{ stat.value }}</span>
+          <span class="stat-label">{{ stat.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+# Tools
+.tools/
+
+# Backend
+cv-backend/target/
+*.class
+
+# Frontend
+cv-frontend/node_modules/
+cv-frontend/dist/
+cv-frontend/.angular/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Misc
+DSC07995.JPG

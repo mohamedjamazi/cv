@@ -1,0 +1,52 @@
+<section id="skills" class="section skills-section">
+  <div class="container">
+    <div #animEl class="fade-in">
+      <p class="section-label">Ce que je maîtrise</p>
+      <h2 class="section-title">Compétences</h2>
+      <p class="section-subtitle">Un ensemble de compétences techniques et humaines acquises tout au long de ma formation.</p>
+    </div>
+
+    <div class="skills-grid">
+      <!-- Technical -->
+      <div #animEl class="fade-in skills-block">
+        <h3 class="skills-group-title">
+          <span class="group-icon"><app-icon name="code" [size]="18"></app-icon></span> Compétences Techniques
+        </h3>
+        <div class="skill-bars">
+          @for (skill of technical; track skill.name) {
+            <div #animEl class="fade-in skill-item">
+              <div class="skill-header">
+                <span class="skill-name">{{ skill.name }}</span>
+                <span class="skill-pct">{{ skill.level }}%</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill" [attr.data-level]="skill.level"></div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div #animEl class="fade-in skills-block" style="transition-delay:0.2s">
+        <h3 class="skills-group-title">
+          <span class="group-icon"><app-icon name="tools" [size]="18"></app-icon></span> Frameworks & Outils
+        </h3>
+        <div class="tools-grid">
+          @for (tool of tools; track tool) {
+            <span class="tool-tag">{{ tool }}</span>
+          }
+        </div>
+
+        <h3 class="skills-group-title mt">
+          <span class="group-icon"><app-icon name="users" [size]="18"></app-icon></span> Soft Skills
+        </h3>
+        <div class="soft-pills">
+          @for (s of soft; track s) {
+            <span class="soft-pill">{{ s }}</span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+<section id="education" class="section edu-section">
+  <div class="container">
+    <div #animEl class="fade-in">
+      <p class="section-label">Formation & Certifications</p>
+      <h2 class="section-title">Éducation</h2>
+      <p class="section-subtitle">Mon parcours académique et mes certifications professionnelles.</p>
+    </div>
+
+    <div class="edu-grid">
+      @for (item of education; track item.degree; let i = $index) {
+        <div #animEl class="fade-in edu-card" [style.transition-delay]="(i * 0.1) + 's'">
+          <div class="edu-icon"><app-icon [name]="item.icon" [size]="24"></app-icon></div>
+          <div class="edu-body">
+            <div class="edu-header">
+              <span class="edu-period">{{ item.period }}</span>
+            </div>
+            <h3 class="edu-degree">{{ item.degree }}</h3>
+            <p class="edu-institution">{{ item.institution }} · {{ item.location }}</p>
+            <p class="edu-desc">{{ item.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
